@@ -1,0 +1,31 @@
+<launch>
+  <rosparam command="load" file="$(find grid_map_demos)/config/image_to_gridmap_demo.yaml" />
+
+    <!-- Load the image. -->
+    <node pkg="grid_map_demos" type="image_folder_publisher.py" name="image_publisher" output="screen" >
+      <param name="folder_path" value="/mrtstorage/users/pan/material_dataset_v1/depth/" /> //TODO
+      <param name="path_save" value="/mrtstorage/users/pan/material_dataset_v1/label/" />
+      <param name="topic" value="~image" />
+    </node>
+  <!-- Launch the grid map filters demo node. -->
+  <node pkg="grid_map_demos" type="depth_to_traversability" name="depth_to_traversability" output="screen">
+
+  	<!-- Output topic -->
+  	<param name="output_topic" value="filtered_map" />
+  	<!-- Load grid map filter chain configuration -->
+    <rosparam command="load" file="$(find grid_map_demos)/config/filters_demo_filter_chain.yaml" />
+  </node>
+
+  <!-- Load the general parameters (except for filter chain) for this demo. -->
+<!--   <rosparam command="load" file="$(find grid_map_demos)/config/filters_demo.yaml" /> -->
+
+
+
+<!--   <node pkg="grid_map_demos" type="image_to_gridmap_demo" name="image_to_gridmap_demo" output="screen" /> -->
+
+<!--    --><!-- Launch the grid map visualizer. -->
+<!--   <node pkg="grid_map_visualization" type="grid_map_visualization" name="grid_map_visualization" output="screen" /> -->
+
+<!--    --><!-- Launch RViz with the demo configuration. -->
+<!--   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find grid_map_demos)/rviz/filters_demo.rviz" /> -->
+</launch>

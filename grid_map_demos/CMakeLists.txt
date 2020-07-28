@@ -113,6 +113,13 @@ add_executable(
   src/filters_demo_node.cpp
   src/FiltersDemo.cpp
 )
+# TODO
+add_executable(
+    depth_to_traversability
+    src/depthToTraversability_node.cpp
+    src/depthToTraversability.cpp
+)
+
 
 add_executable(
   normal_filter_comparison_demo
@@ -177,6 +184,11 @@ target_link_libraries(
   filters_demo
   ${catkin_LIBRARIES}
 )
+#TODO
+target_link_libraries(
+        depth_to_traversability
+        ${catkin_LIBRARIES}
+)
 
 target_link_libraries(
   normal_filter_comparison_demo
@@ -191,9 +203,10 @@ target_link_libraries(
 #############
 ## Install ##
 #############
-
+#set(CMAKE_PREFIX_PATH "/opt/mrtsoftware/release/lib/python3.6")
 catkin_install_python(
-  PROGRAMS scripts/image_publisher.py
+  PROGRAMS scripts/image_folder_publisher.py
+        scripts/image_publisher.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
@@ -201,6 +214,7 @@ catkin_install_python(
 install(
   TARGETS 
     filters_demo
+    depth_to_traversability #TODO
     image_to_gridmap_demo
     interpolation_demo
     iterator_benchmark
