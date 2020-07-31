@@ -2,8 +2,8 @@
   <rosparam command="load" file="$(find grid_map_demos)/config/image_to_gridmap_demo.yaml" />
 
     <!-- Load the image. -->
-    <node pkg="grid_map_demos" type="image_folder_publisher.py" name="image_publisher" output="screen" >
-      <param name="folder_path" value="/mrtstorage/users/pan/material_dataset_v1/depth/" /> //TODO
+    <node pkg="grid_map_demos" type="image_folder_publisher_new.py" name="image_publisher" output="screen" >
+      <param name="folder_path" value="/mrtstorage/users/pan/material_dataset_v1/depth_10/" /> //TODO
       <param name="path_save" value="/mrtstorage/users/pan/material_dataset_v1/label/" />
       <param name="topic" value="~image" />
     </node>

@@ -26,7 +26,7 @@ namespace grid_map_demos {
             return;
         }
         map_.setBasicLayers({"elevation"});
-        imageSubscriber_ = nodeHandle_.subscribe(imageTopic_, 1000, &DepthToTraversability::callback, this);
+        imageSubscriber_ = nodeHandle_.subscribe(imageTopic_, 10000, &DepthToTraversability::callback, this);
 //        imagePublisher_ = nodeHandle_.advertise<grid_map_msgs::GridMap>(outputTopic_, 1, true);
 
         // Setup filter chain.
@@ -51,7 +51,7 @@ namespace grid_map_demos {
         nodeHandle_.param("min_height", minHeight_, 0.0);
         nodeHandle_.param("max_height", maxHeight_, 1.0);
 
-//        nodeHandle_.param("output_topic", outputTopic_, std::string("output"));
+//        nodeHandle_.param("output_topic", outputTopic_, std::string("output")); 读取filter的参数
         nodeHandle_.param("filter_chain_parameter_name", filterChainParametersName_, std::string("grid_map_filters"));
         return true;
     }
